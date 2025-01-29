@@ -33,24 +33,25 @@ int partition(int arr[], int l, int r) {
   }
 }
 
-void quicksort(int arr[], int l, int r) {
-  if (l >= r)
-    return;
+int quickselect(int arr[], int k, int l, int r) {
+    if(l == r) {
+        return arr[l];
+    }
+    
+    int x = partition(arr, l, r);
 
-  int partition_index = partition(arr, l, r);
-
-  quicksort(arr, l, partition_index);
-  quicksort(arr, partition_index + 1, r);
+    if(k <= x){
+        return quickselect(arr, k, l, x);
+    }
+    
+    return quickselect(arr, k, x + 1, r);
 }
 
 int main() {
   int arr[] = {4, 1, 3, 9, 7};
   int n = sizeof(arr) / sizeof(int);
+  int idx = 3;
+  int element = quickselect(arr, idx, 0, n - 1);
 
-  quicksort(arr, 0, n - 1);
-
-  for (int i = 0; i < n; i++) {
-    cout << arr[i] << ' ';
-  }
-  cout << endl;
+  cout << idx + 1 << "th smallest element is " << element;
 }
