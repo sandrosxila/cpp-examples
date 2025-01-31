@@ -39,21 +39,20 @@ vector<Edge> kruskals(int m, vector<int> u, vector<int> v, vector<int> w) {
 }
 
 int main() {
-  int E = 5;
-  int V = 7;
+    int E = 14;
+    int V = 9;
 
-  vector<int> from   {1,  1,  1,  1,  2,  3,  4};
-  vector<int> to     {2,  3,  4,  5,  3,  4,  5};
-  vector<int> weight {20, 50, 70, 90, 30, 40, 60};
+    vector<int> from   {0,  0,  1,  1,  7,  7,  2,  8,  2,  2,  6,  3,  3,  5};
+    vector<int> to     {1,  7,  7,  2,  8,  6,  8,  6,  3,  5,  5,  5,  4,  4};
+    vector<int> weight {4,  8, 11,  8,  7,  1,  2,  6,  7,  4,  2, 14,  9,  10};
 
-  vector<Edge> mst = kruskals(V, from, to, weight);
+    vector<Edge> mst = kruskals(V, from, to, weight);
 
-  for(auto edge : mst) {
+    for(auto edge : mst) {
     cout << edge.from << ' ' << edge.to << ' ' << edge.weight << endl;
-  }
-  cout << endl;
+    }
 
-  return 0;
+    return 0;
 }
 
 /*
