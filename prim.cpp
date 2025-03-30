@@ -7,12 +7,15 @@ struct Edge {
     int weight;
 };
 
+// pair<weight, pair<from, to>> To sort edges by weight
+typedef pair<int, pair<int,int>> EdgePair;
+
 // Function to find sum of weights of edges of the Minimum Spanning Tree.
 vector<Edge> spanningTree(int V, vector<vector<int>> adj[]) {
     vector<bool> visited(V, false);
     vector<Edge> mst;
     
-    priority_queue<pair<int, pair<int,int>>, vector<pair<int, pair<int,int>>>, greater<pair<int, pair<int,int>>>> pq;
+    priority_queue<EdgePair, vector<EdgePair>, greater<EdgePair>> pq;
     
     pq.push({0, {-1, 0}});
     while(!pq.empty()) {
